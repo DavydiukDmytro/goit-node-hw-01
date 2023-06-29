@@ -1,4 +1,17 @@
+const { Command } = require('commander');
 const { listContacts, getContactById, addContact, removeContact } = require('./contacts');
+
+const program = new Command();
+program
+	.option('-a, --action <type>', 'chose action')
+	.option('-i, --id <type>', 'user id')
+	.option('-n, --n <type>', 'user name')
+	.option('-e, --email <type>', 'user email')
+	.option('-p, --phone <type>', 'user phone');
+
+program.parse(process.argv);
+
+const argv = program.opts();
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
 	switch (action) {
@@ -23,12 +36,4 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 	}
 };
 
-// invokeAction({ action: 'getAll' }); +
-// invokeAction({ action: 'getById', id: 'rsKkOQUi80UsgVPCcLZZW' }); +
-// invokeAction({ action: 'removeById', id: 'rsKkOQUi80UsgVPCcLZZW' }); +
-// invokeAction({
-// 	action: 'add',
-// 	name: 'Dmytro Ivanov',
-// 	email: 'ivanov@gmail.com',
-// 	phone: '+380999999999',
-// });
+invokeAction(argv);
