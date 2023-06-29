@@ -39,4 +39,4 @@ This function deletes a contact by id. If there is no such id in the list, it re
 
 The result of execution in the console:
 
-![Calling the removeById function and its successful execution](https://i.ibb.co/9q7H0sg/remove-By-Id.png)
+![Calling the removeById function and its successful execution](https://i.ibb.co/XyR4LfR/remove-By-Id.png)
