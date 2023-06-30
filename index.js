@@ -17,19 +17,21 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 	switch (action) {
 		case 'getAll':
 			const allContacts = await listContacts();
-			console.table(allContacts);
+			allContacts.message ? console.log(allContacts.message) : console.table(allContacts);
 			break;
 		case 'getById':
 			const oneContact = await getContactById(id);
-			console.log(oneContact);
+			oneContact.message ? console.log(oneContact.message) : console.log(oneContact);
 			break;
 		case 'removeById':
 			const removeContactById = await removeContact(id);
-			console.log(removeContactById);
+			removeContactById.message
+				? console.log(removeContactById.message)
+				: console.log(removeContactById);
 			break;
 		case 'add':
 			const newContact = await addContact(name, email, phone);
-			console.log(newContact);
+			newContact.message ? console.log(newContact.message) : console.log(newContact);
 			break;
 		default:
 			console.log('Unknown action ');
